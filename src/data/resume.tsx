@@ -1,12 +1,16 @@
 import { Icons } from "@/components/icons";
 import {
-  HomeIcon,
-  NotebookIcon,
+  Home,
+  Notebook,
   Code2,
   FileText,
   Download,
   Pencil,
   FolderOpen,
+  Cloud,
+  LayoutDashboard,
+  Database,
+  GitBranch,
 } from "lucide-react";
 import { ACTIVE_PDF } from "@/data/resume-versions";
 import { PHP } from "@/components/ui/svgs/php";
@@ -18,8 +22,8 @@ import { Python } from "@/components/ui/svgs/python";
 import { Django } from "@/components/ui/svgs/django";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
-import { MongoDB } from "@/components/ui/svgs/mongoDB";
 import { MySQL } from "@/components/ui/svgs/mySQL";
+import { MongoDB } from "@/components/ui/svgs/mongoDB";
 import { Git } from "@/components/ui/svgs/git";
 
 export const DATA = {
@@ -33,51 +37,31 @@ export const DATA = {
   summary:
     "Experienced Full Stack Developer with 7+ years of expertise in backend development using PHP, Laravel, Python, and Django. Skilled in building scalable web applications, REST APIs, eCommerce platforms, and business management systems. Proficient in JavaScript, MySQL, and MongoDB with a strong focus on clean architecture, maintainable code, and high-performance applications. Currently expanding expertise in Python and Django backend development while seeking remote and international software engineering opportunities.",
   avatarUrl: "/me/Me01.png",
-  skills33: [
+
+  skills: [
     { name: "PHP", icon: PHP },
     { name: "Laravel", icon: Laravel },
     { name: "Python", icon: Python },
     { name: "Django", icon: Django },
     { name: "JavaScript", icon: JavaScript },
-    { name: "Node.js", icon: Nodejs },
-    { name: "Statamic CMS" },
+    // { name: "Node.js", icon: Nodejs },
+    { name: "Filament", icon: LayoutDashboard },
+    { name: "Statamic CMS", icon: FileText },
     { name: "MySQL", icon: MySQL },
     { name: "MongoDB", icon: MongoDB },
     { name: "REST APIs", icon: RestApi },
     { name: "Docker", icon: Docker },
-    { name: "Git ( GitHub, GitLab )" },
-    { name: "Bitbucket" },
-    { name: "AWS(EC2,S3,EB,CF)" },
-  ],
-
-  skills: [
-    { name: "PHP" },
-    { name: "Laravel", icon: Laravel },
-    { name: "Python", icon: Python },
-    { name: "Django", icon: Django },
-    { name: "JavaScript" },
-    { name: "Node.js" },
-    { name: "Filament" },
-    { name: "Statamic CMS" },
-    { name: "MySQL" },
-    { name: "MongoDB" },
-    { name: "REST APIs" },
-    { name: "Docker", icon: Docker },
-    { name: "Git (GitHub, GitLab)" },
-    { name: "Bitbucket" },
-    { name: "AWS (EC2, S3, EB, CloudFront)" },
+    { name: "Git (GitHub, GitLab)", icon: Git },
+    { name: "Bitbucket", icon: GitBranch },
+    { name: "AWS (EC2, S3, EB, CloudFront)", icon: Cloud },
   ],
 
   navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/", icon: Home, label: "Home" },
     { href: "/projects", icon: Code2, label: "Projects" },
     { href: "/blog", icon: FileText, label: "Blog" },
     { href: "/notes", icon: Pencil, label: "Notes" },
-    {
-      href: "/resume",
-      icon: FolderOpen,
-      label: "Hire Me",
-    },
+    { href: "/resume", icon: FolderOpen, label: "Hire Me" },
   ],
   contact: {
     email: "virsing.vasava255@gmail.com",

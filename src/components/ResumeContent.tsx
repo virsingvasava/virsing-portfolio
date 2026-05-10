@@ -1,7 +1,7 @@
 "use client";
 
 import { COMMON_DATA, RESUME_VERSIONS, ResumeMode } from "@/data/resume-versions";
-import { Mail, Phone, Linkedin, MapPin, Github } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin, Github, Globe } from "lucide-react";
 
 interface ResumeContentProps {
     mode?: ResumeMode;
@@ -38,6 +38,10 @@ export default function ResumeContent({ mode = "laravel" }: ResumeContentProps) 
                         <div className="flex items-center gap-2">
                             <Linkedin className="w-3.5 h-3.5 text-primary print:text-[#1f3a8a]" />
                             <a href={COMMON_DATA.linkedin} target="_blank" className="text-primary print:text-[#1a73e8] hover:underline">LinkedIn</a>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Globe className="w-3.5 h-3.5 text-primary print:text-[#1f3a8a]" />
+                            <a href={COMMON_DATA.website} target="_blank" className="text-primary print:text-[#1a73e8] hover:underline">virsing.com</a>
                         </div>
                     </div>
                 </div>

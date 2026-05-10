@@ -3,7 +3,7 @@ import type { SVGProps } from "react";
 const PHP = (props: SVGProps<SVGSVGElement>) => (
     <svg
         {...props}
-        viewBox="0 0 120 120" // Square viewbox to align with other skill icons
+        viewBox="0 24 120 72"
         xmlns="http://www.w3.org/2000/svg"
     >
         <title>PHP</title>

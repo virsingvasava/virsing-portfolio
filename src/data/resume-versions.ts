@@ -1,24 +1,24 @@
 export const RESUME_CONFIG = {
-    laravel: false,
-    django: false, // Python base
-    europa: true,
+    laravel: true,
+    django: false,
+    europa: false,
 } as const;
 
 export type ResumeMode = keyof typeof RESUME_CONFIG;
 export const ACTIVE_MODE = (Object.entries(RESUME_CONFIG).find(([_, isActive]) => isActive)?.[0] || "django") as ResumeMode;
 
 export const RESUME_PDF_MAP: Record<ResumeMode, string> = {
-    laravel: "/resume_pdf/Virsing_Vasava_Laravel_Developer_6+_Years.pdf",
-    django: "/resume_pdf/Virsing_Vasava _ Python Backend_Developer.pdf",
-    europa: "/resume_pdf/Virsing_Vasava_EU.pdf",
+    laravel: "/resume_pdf/Virsing_Vasava_Laravel_Developer_Resume.pdf",
+    django: "/resume_pdf/Virsing_Vasava_Full_Stack_Developer_Resume.pdf",
+    europa: "/resume_pdf/Virsing_Vasava_EU_Resume.pdf",
 };
 
 export const ACTIVE_PDF = RESUME_PDF_MAP[ACTIVE_MODE];
 
 export const RESUME_VERSIONS = {
     laravel: {
-        title: "Senior Laravel Backend Developer",
-        summary: "Senior Laravel Backend Developer with 6.5+ years of experience in building scalable web applications and RESTful APIs using PHP and Laravel. Strong expertise in MVC architecture, database design, and backend system optimization. Experienced in developing eCommerce, logistics, and enterprise applications. Passionate about clean code, performance optimization, and modern backend best practices.",
+        title: "Sr. Laravel Backend Developer",
+        summary: "Sr. Laravel Backend Developer with 7+ years of experience in building scalable web applications and RESTful APIs using PHP and Laravel. Strong expertise in MVC architecture, database design, and backend system optimization. Experienced in developing eCommerce, logistics, and enterprise applications. Passionate about clean code, performance optimization, and modern backend best practices.",
         skills: [
             { label: "Languages", value: "PHP, JavaScript, Python" },
             { label: "Backend Frameworks", value: "Laravel, CodeIgniter, Django, Flask" },
@@ -30,8 +30,8 @@ export const RESUME_VERSIONS = {
         ],
     },
     django: {
-        title: "Senior Python Django Developer",
-        summary: "Senior Python Django Developer with 6.5+ years of experience in backend development, specializing in building scalable web applications and high-performance APIs using Python and Django. Expert in designing robust backend architectures, optimizing database performance, and implementing complex business logic. Experienced in integrating third-party services and ensuring application security.",
+        title: "Sr. Python Django Developer",
+        summary: "Sr. Python Django Developer with 7+ years of experience in backend development, specializing in building scalable web applications and high-performance APIs using Python and Django. Expert in designing robust backend architectures, optimizing database performance, and implementing complex business logic. Experienced in integrating third-party services and ensuring application security.",
         skills: [
             { label: "Languages", value: "Python, PHP, JavaScript" },
             { label: "Backend Frameworks", value: "Django, Flask, Laravel, CodeIgniter" },
@@ -62,6 +62,7 @@ export const COMMON_DATA = {
     phone: "+91 9638601537",
     linkedin: "https://www.linkedin.com/in/virsing-vasava",
     github: "https://github.com/virsingvasava",
+    website: "https://virsing.com",
     location: "Ahmedabad, Gujarat, India",
     experience: [
         {
