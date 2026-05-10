@@ -1,0 +1,50 @@
+---
+title: "Managing Django Media Files with AWS S3"
+publishedAt: "2026-05-12"
+updatedAt: "2026-05-12"
+author: "Virsing Vasava"
+summary: "Learn how to decouple your storage from your compute by hosting Django static and media files securely on Amazon Simple Storage Service (S3)."
+image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=600&fit=crop"
+---
+
+# Managing Django Media Files with AWS S3
+
+When running Django on a cloud platform like AWS EC2 or Elastic Beanstalk, you shouldn't store user-uploaded media files on the local server disk. Servers are ephemeral—if the server crashes or scales down, local files are lost.
+
+The solution is Amazon Simple Storage Service (**S3**). S3 provides highly durable, scalable, and secure object storage.
+
+## The `django-storages` Package
+
+Integrating S3 with Django is made incredibly simple thanks to the `django-storages` library and the `boto3` AWS SDK.
+
+```bash
+pip install boto3 django-storages
+```
+
+## Configuring `settings.py`
+
+Once installed, add `storages` to your `INSTALLED_APPS` and configure your AWS credentials. It is critical to use environment variables for your secret keys!
+
+```python
+# settings.py
+import os
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'my-django-bucket'
+AWS_S3_REGION_NAME = 'us-east-1'
+
+# Use S3 for media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Use S3 for static files (optional)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+```
+
+## Benefits of using S3
+
+1. **Infinite Scaling:** S3 scales automatically to handle massive amounts of data.
+2. **Decoupling:** Your application server handles logic, while S3 handles file storage. This separation of concerns allows you to easily scale your compute independently of your storage.
+3. **Security:** You can implement fine-grained access controls using IAM policies.
+
+By integrating AWS S3, your application becomes stateless, paving the way for advanced scaling architectures like Auto Scaling Groups.

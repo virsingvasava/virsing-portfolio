@@ -1,0 +1,43 @@
+---
+title: "Accelerating Global Content Delivery with AWS CloudFront"
+publishedAt: "2026-05-13"
+updatedAt: "2026-05-13"
+author: "Virsing Vasava"
+summary: "Dramatically improve the load times of your web applications worldwide by serving static assets through Amazon CloudFront CDN."
+image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop"
+---
+
+# Accelerating Global Content Delivery with AWS CloudFront
+
+If your application is hosted in London, a user visiting from Tokyo will experience significant latency as data travels halfway across the globe. This results in slow page loads and a poor user experience.
+
+Amazon **CloudFront** solves this problem. CloudFront is a Content Delivery Network (CDN) that caches your application's static and media files at edge locations worldwide.
+
+## How CloudFront Works with Django
+
+Typically, CloudFront is paired with an AWS S3 bucket.
+
+1. **Origin:** You set your S3 bucket (which holds your Django CSS, JS, and user uploads) as the CloudFront Origin.
+2. **Edge Caching:** When a user in Tokyo requests an image, CloudFront serves it from an edge node in Tokyo, rather than fetching it all the way from London.
+3. **Delivery:** The user receives the file in milliseconds.
+
+## Setting Up CloudFront
+
+Creating a CloudFront distribution is straightforward:
+
+1. Go to the AWS CloudFront console and click **Create Distribution**.
+2. Select your S3 bucket from the **Origin Domain Name** dropdown.
+3. Set your Viewer Protocol Policy to **Redirect HTTP to HTTPS** for better security.
+4. Once deployed, AWS provides you with a `.cloudfront.net` domain.
+
+## Updating Django Settings
+
+To instruct Django to serve files via the CDN instead of directly from S3, you simply update the `AWS_S3_CUSTOM_DOMAIN` setting:
+
+```python
+# settings.py
+AWS_STORAGE_BUCKET_NAME = 'my-django-bucket'
+AWS_S3_CUSTOM_DOMAIN = 'd12345abcdef.cloudfront.net'
+```
+
+Now, all `{% static 'image.png' %}` tags in your templates will automatically point to your ultra-fast CloudFront domain. Your global users will thank you!

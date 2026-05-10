@@ -1,0 +1,69 @@
+---
+title: "Deploying Django on AWS EC2 with Gunicorn and Nginx"
+publishedAt: "2026-05-11"
+updatedAt: "2026-05-11"
+author: "Virsing Vasava"
+summary: "A step-by-step guide to taking your Django project live by deploying it manually on an AWS EC2 instance using Gunicorn and Nginx."
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop"
+---
+
+# Deploying Django on AWS EC2 with Gunicorn and Nginx
+
+Amazon Elastic Compute Cloud (**EC2**) provides scalable computing capacity in the AWS cloud. Deploying your Django application directly onto an EC2 instance gives you ultimate control over your server environment.
+
+## The Architecture
+
+When deploying Django to production, you cannot use the built-in `runserver`. Instead, the standard stack consists of:
+
+1. **Nginx:** A highly efficient web server that handles incoming HTTP requests and serves static files directly.
+2. **Gunicorn:** A Python WSGI HTTP Server that sits behind Nginx and translates web requests into a format Django understands.
+3. **Django:** Your application code.
+
+## Provisioning the EC2 Instance
+
+1. Log into your AWS Console and navigate to EC2.
+2. Launch a new instance, selecting an **Ubuntu Server** AMI.
+3. Configure your Security Groups to allow incoming traffic on ports `80` (HTTP), `443` (HTTPS), and `22` (SSH).
+4. SSH into your instance.
+
+## Setting up Gunicorn
+
+Once your code is on the server, you'll configure Gunicorn as a systemd service. This ensures your Django application restarts automatically if the server reboots.
+
+```bash
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/myproject
+ExecStart=/home/ubuntu/myproject/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/myproject/myproject.sock myproject.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## Configuring Nginx
+
+Finally, Nginx needs to be configured to pass traffic to your Gunicorn socket.
+
+```bash
+server {
+    listen 80;
+    server_name example.com;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/ubuntu/myproject;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/myproject/myproject.sock;
+    }
+}
+```
+
+This setup provides a highly robust, scalable, and battle-tested environment for your Python applications.

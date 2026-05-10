@@ -1,0 +1,47 @@
+---
+title: "Mastering MySQL Indexing for Faster Queries"
+publishedAt: "2026-05-15"
+updatedAt: "2026-05-15"
+author: "Virsing Vasava"
+summary: "Understand how MySQL indexes work under the hood and learn how to structure them to optimize your database read performance."
+image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=600&fit=crop"
+---
+
+# Mastering MySQL Indexing for Faster Queries
+
+As your database grows from thousands of rows to millions, queries that used to take milliseconds can suddenly take seconds. The primary tool to solve this is **Indexing**.
+
+## How Indexes Work
+
+Think of a database index like the index at the back of a textbook. Instead of reading the entire book (a full table scan) to find a specific keyword, you look it up in the index, which points you directly to the correct page. 
+
+In MySQL, B-Tree (Balanced Tree) indexes are the default and most common type.
+
+## Creating an Index
+
+If your application frequently searches for users by their email address, you should index the `email` column.
+
+```sql
+CREATE INDEX idx_user_email ON users(email);
+```
+
+## Composite Indexes
+
+Often, you query multiple columns at once. In these cases, a composite index is highly effective. The order of the columns in a composite index is critical due to the **Leftmost Prefix Rule**.
+
+```sql
+-- Creating a composite index
+CREATE INDEX idx_status_created ON orders(status, created_at);
+```
+
+This index will speed up queries that filter by `status` AND `created_at`, or queries that just filter by `status`. However, it will **not** help queries that *only* filter by `created_at`.
+
+## Using EXPLAIN
+
+Before adding an index, always profile your queries using `EXPLAIN`.
+
+```sql
+EXPLAIN SELECT * FROM orders WHERE status = 'shipped';
+```
+
+The output will tell you if MySQL is using an index (`type: ref`) or doing a full table scan (`type: ALL`). Using indexes intelligently is the secret to highly scalable backend architectures.
