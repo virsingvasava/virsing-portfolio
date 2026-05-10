@@ -355,7 +355,6 @@ export const DATA = {
       video: "/videos/countmee.webm",
     },
   ],
-  hackathons: [],
   notes: [
     {
       category: "Backend Development",
@@ -398,4 +397,17 @@ export const DATA = {
       ],
     },
   ],
+  hackathons: [] as {
+    title: string;
+    dates: string;
+    location: string;
+    description: string;
+    image: string;
+    mlh: string;
+    links: {
+      title: string;
+      icon?: React.ReactNode;
+      href: string;
+    }[];
+  }[],
 } as const;
