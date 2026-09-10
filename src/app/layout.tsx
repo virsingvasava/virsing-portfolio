@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
   variable: "--font-mono",
 });
 
+/*
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
@@ -54,6 +55,60 @@ export const metadata: Metadata = {
     google: "",
     yandex: "",
   },
+};
+*/
+
+/**
+ * Person structured data
+ *
+ * Helps search engines understand that this website
+ * represents a real person and connects the person's
+ * official profiles together.
+ */
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://virsing.com/#person",
+
+  name: "Virsing Vasava",
+
+  url: "https://virsing.com/",
+
+  image: "https://virsing.com/me/virsing-vasava.jpg",
+
+  jobTitle: "Senior Software Engineer",
+
+  description:
+    "Senior Software Engineer specializing in Laravel, PHP, Python, Django, REST APIs and scalable web applications.",
+
+  worksFor: {
+    "@type": "Organization",
+    name: "WH International Group FZE",
+    url: "https://wh-international.net/",
+  },
+
+  sameAs: [
+    "https://www.linkedin.com/in/virsing-vasava/",
+    "https://github.com/virsingvasava",
+  ],
+
+  knowsAbout: [
+    "Laravel",
+    "PHP",
+    "Python",
+    "Django",
+    "JavaScript",
+    "REST APIs",
+    "MySQL",
+    "MongoDB",
+    "Docker",
+    "AWS",
+    "WordPress",
+    "WooCommerce",
+    "Shopify",
+    "Statamic CMS",
+    "Filament",
+  ],
 };
 
 export default function RootLayout({

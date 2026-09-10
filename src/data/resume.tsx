@@ -10,7 +10,7 @@ import {
   Cloud,
   LayoutDashboard,
   Database,
-  GitBranch,
+  GitBranch
 } from "lucide-react";
 import { ACTIVE_PDF } from "@/data/resume-versions";
 import { PHP } from "@/components/ui/svgs/php";
@@ -26,6 +26,10 @@ import { MySQL } from "@/components/ui/svgs/mySQL";
 import { MongoDB } from "@/components/ui/svgs/mongoDB";
 import { Git } from "@/components/ui/svgs/git";
 
+import { Shopify } from "@/components/ui/svgs/shopify";
+import { WooCommerce } from "@/components/ui/svgs/wooCommerce";
+import { WordPress } from "@/components/ui/svgs/wordPress";
+
 export const DATA = {
   name: "Virsing Vasava",
   initials: "VV",
@@ -33,10 +37,10 @@ export const DATA = {
   location: "Ahmedabad, Gujarat, India",
   locationLink: "https://www.google.com/maps/place/Ahmedabad",
   description:
-    "Full Stack Developer specializing in Laravel, Python, Django, and scalable backend systems.",
+    "Senior Software Engineer specializing in Laravel, PHP, Python, Django, and scalable web applications, APIs, CMS, and business systems.",
   summary:
-    "Experienced Full Stack Developer with 7+ years of expertise in backend development using PHP, Laravel, Python, and Django. Skilled in building scalable web applications, REST APIs, eCommerce platforms, and business management systems. Proficient in JavaScript, MySQL, and MongoDB with a strong focus on clean architecture, maintainable code, and high-performance applications. Currently expanding expertise in Python and Django backend development while seeking remote and international software engineering opportunities.",
-  avatarUrl: "/me/Me01.png",
+    "Senior Software Engineer with 7+ years of experience designing and developing scalable web applications, REST APIs, CMS platforms, eCommerce solutions, and business management systems. Strong expertise in PHP and Laravel, with hands-on experience in Python, Django, Statamic, Filament, WordPress, WooCommerce,  Shopify, JavaScript, MySQL, MongoDB, Docker, Git, and AWS. Experienced in backend architecture, API integrations, database design, automation, performance optimization, security, and deployment. Focused on building clean, maintainable, secure, and high-performance software that solves real business problems. Currently based in Dubai, UAE, and open to international and remote software engineering opportunities.",
+  avatarUrl: "/me/virsing-vasava.jpg",
 
   skills: [
     { name: "PHP", icon: PHP },
@@ -44,7 +48,10 @@ export const DATA = {
     { name: "Python", icon: Python },
     { name: "Django", icon: Django },
     { name: "JavaScript", icon: JavaScript },
-    // { name: "Node.js", icon: Nodejs },
+    { name: "Node.js", icon: Nodejs },
+    { name: "WordPress", icon: WordPress },
+    { name: "WooCommerce", icon: WooCommerce },
+    { name: "Shopify", icon: Shopify },
     { name: "Filament", icon: LayoutDashboard },
     { name: "Statamic CMS", icon: FileText },
     { name: "MySQL", icon: MySQL },
@@ -101,6 +108,32 @@ export const DATA = {
     },
   },
   work: [
+
+    {
+      company: "WH International Group FZE",
+      href: "https://www.linkedin.com/company/81848455/",
+      badges: ["Full-time"],
+      location: "Al Hamriyah, Sharjah, United Arab Emirates",
+      title: "Senior Software Engineer",
+      logoUrl: "/images/wh_international_group_fze_logo.jpeg",
+      start: "September 2026",
+      end: "Present",
+      description:
+        "Develop and maintain company websites, web applications, and internal software systems. Manage website content, APIs, databases, hosting, SSL, backups, deployments, performance, security, automation, dashboards, and technical infrastructure. Evaluate and implement relevant technologies and AI tools to improve business efficiency.",
+    },
+    {
+      company: "SilverFern Digital",
+      href: "https://www.linkedin.com/company/92531269/",
+      badges: ["Freelance"],
+      location: "Dubai, United Arab Emirates · Remote",
+      title: "Freelance Statamic Developer",
+      logoUrl: "/images/silverfern_digital_logo.jpeg",
+      start: "April 2026",
+      end: "Aug 2026",
+      description:
+        "Worked as a freelance Statamic Developer, providing CMS development and backend solutions for client projects. Developed and customized Statamic and Laravel applications, built reusable CMS structures, integrated APIs, implemented dynamic content management features, and optimized existing applications.",
+    },
+
     {
       company: "Acquaint Softtech Private Limited",
       href: "https://www.linkedin.com/company/13280481/",
