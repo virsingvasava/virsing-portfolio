@@ -8,8 +8,26 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-    title: "Profile Card",
-    description: "Comprehensive professional and personal profile card of Virsing Vasava.",
+    title: "Virsing Vasava | Senior Full-Stack Software Engineer Profile",
+    description: "Official professional profile and digital card of Virsing Vasava, Senior Software Engineer and Full-Stack Specialist based in Dubai, UAE. Expert in Laravel, PHP, Python, and Next.js.",
+    keywords: ["Virsing Vasava", "Senior Software Engineer Dubai", "Full Stack Developer UAE", "Laravel Developer", "Virsing Vasava Profile"],
+    authors: [{ name: "Virsing Vasava", url: "https://virsing.com" }],
+    openGraph: {
+        title: "Virsing Vasava | Senior Software Engineer",
+        description: "Explore the professional background, skills, and projects of Virsing Vasava.",
+        url: "https://virsing.com/profile",
+        siteName: "Virsing Vasava Portfolio",
+        images: [
+            {
+                url: "https://virsing.com/me/virsing-vasava.jpg",
+                width: 800,
+                height: 600,
+                alt: "Virsing Vasava",
+            },
+        ],
+        locale: "en_US",
+        type: "profile",
+    },
 };
 
 export default function ProfileCardPage() {
@@ -219,3 +237,29 @@ export default function ProfileCardPage() {
         </main>
     );
 }
+
+<script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Virsing Vasava",
+            "jobTitle": "Senior Software Engineer",
+            "url": "https://virsing.com/profile",
+            "sameAs": [
+                "https://www.linkedin.com/in/virsing-vasava/",
+                "https://github.com/virsingvasava"
+            ],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "WH International Group FZE"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Dubai",
+                "addressCountry": "UAE"
+            }
+        })
+    }}
+/>
